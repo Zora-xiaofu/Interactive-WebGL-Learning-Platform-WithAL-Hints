@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang ="en">              
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGL Educational Tool</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://kit.fontawesome.com/77a57df523.js" crossorigin="anonymous"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <!-- Navbar Section -->
+  <div id="navbar"></div>
+  <!-- Reference List Section -->
+  <section class="reference-list">
+    <h2>Reference List</h2>
+    <ul>
+        <li>
+            Bourry, X. (2025). <em>WEBGL ACADEMY.</em> [online] Webglacademy.com. 
+            Available at: <a href="http://www.webglacademy.com/courses.php?courses=0_1_20_2_3_4_23_5_6_7_10#1" target="_blank">WebGL Academy</a> 
+            [Accessed 14 Mar. 2025].
+        </li>
+        <li>
+            <em>Efficient Spatial Anti-Aliasing Rendering for Line Joins on Vector Maps</em> - Scientific Figure on ResearchGate. 
+            Available from: <a href="https://www.researchgate.net/figure/OpenGL-Rendering-Pipeline_fig2_334129575" target="_blank">ResearchGate</a> 
+            [Accessed 14 Mar. 2025].
+        </li>
+        <li>
+            OpenGL Wiki contributors (2022). <em>Rendering Pipeline Overview - OpenGL Wiki.</em> [online] Khronos.org. 
+            Available at: <a href="https://www.khronos.org/opengl/wiki/Rendering_Pipeline_Overview" target="_blank">Khronos OpenGL Wiki</a> 
+            [Accessed 7 Feb. 2025].
+        </li>
+    </ul>
+  </section>
+
+    <script>
+      // Use fetch to load navbar.html and insert it into the page
+      fetch('./navbar.html')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById('navbar').innerHTML = data;
+          
+          const menu = document.querySelector('#mobile-menu');
+          const menuLinks = document.querySelector('.navbar__menu');
+  
+          menu.addEventListener('click', function() {
+            menu.classList.toggle('is-active');
+            menuLinks.classList.toggle('active');
+          });
+        })
+        .catch(error => {
+          console.error('There was a problem loading the navbar:', error);
+        }); 
+    </script>  
+</body>
+</html>

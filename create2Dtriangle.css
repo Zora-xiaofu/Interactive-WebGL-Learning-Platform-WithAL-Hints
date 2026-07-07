@@ -1,0 +1,388 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.vertex-body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#tabs-wrapper {
+  display: flex;
+  width: 100%;
+  background: #f1f4f4;
+  border-bottom: 2px solid #ddd;
+}
+
+#buttons-wrapper-d {
+  display: flex;
+  width: 100%;
+  background: #f4f4f4;
+  border-bottom: 2px solid #ddd;
+  align-items: center;
+  padding: 3px;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+
+#tabs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50%;
+  padding: 3px;
+  margin-left: 2%;
+}
+
+#exercise-format {
+  flex: 0; 
+  display: flex;
+  align-items: center; 
+  font-size: 18px;
+  font-weight: bold;
+  color: #44474f; 
+  padding-left: 10px; 
+  white-space: nowrap; 
+}
+
+.tab-list {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.tab-button {
+  display: inline-block;
+  margin: 0 10px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold; 
+  line-height: 40px;
+  background-position: 0 -45px;
+  transition: background-position 0.5s;
+  background: #f4f4f4; 
+  color: #aaa; 
+  border: 2px solid #ddd; 
+}
+
+.tab-button.active {
+  color: #ffffff;
+  background-color: #ff6b6b;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+/* Prev button and Next button */
+.Prev-Next {
+  width: 80px;
+  padding: 8px; 
+  border: 2px solid #ff6b6b; 
+  background-color: transparent; 
+  color: #ff6b6b; 
+  border-radius: 20px; 
+  font-weight: bold; 
+  text-align: center; 
+  cursor: pointer; 
+  transition: all 0.3s; 
+  text-transform: uppercase;
+}
+
+.Prev-Next:hover {
+  background-color: #ff6b6b; 
+  color: #ffffff;
+}
+
+/* Prev,Next button in disable state */
+.Prev-Next:disabled {
+  background: #f4f4f4;
+  color: #aaa; 
+  border: 2px solid #ddd;
+  cursor: not-allowed; 
+  opacity: 0.6; 
+}
+
+#actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 50%;
+  padding: 1px;
+}
+
+/* Run and Clean button */
+.action-button {
+  width: 80px;
+  padding: 8px;
+  border: 2px solid #ff6b6b;
+  background-color: transparent;
+  color: #ff6b6b;
+  border-radius: 20px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  margin-right: 40px;
+}
+
+.action-button:hover {
+  background-color: #ff6b6b;
+  color: #ffffff;
+}
+
+.action-button.clean {
+  background: red;
+  color: #ffffff;
+}
+
+.action-button.clean:hover {
+  background-color: #ff6b6b;
+  color: #ffffff;
+}
+
+.action-button.hint {
+  background: red;
+  color: #ffffff;
+}
+
+.action-button.hint:hover {
+  background-color: #ff6b6b;
+  color: #ffffff;
+}
+
+#main-container {
+  display: flex;
+  flex: 1;
+  gap: 0px;
+}
+
+/* File tab */
+#file-tabs {
+  display: flex;
+  border-bottom: 2px solid #ddd;
+  gap: 5px;
+  font-weight: bold;
+  color: #44474f;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+/* File tab button */
+.file-tab {
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  transition: all 0.3s;
+}
+
+.file-tab.active {
+  background-color: #ff6b6b;
+  color: #fff;
+  border-color: #ff6b6b;
+}
+
+/* Code container */
+#code-container {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  height: 420px; 
+  overflow: hidden;
+}
+
+/* Explanation */
+#explanation {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  height: 420px; 
+  overflow-y: auto; 
+  word-wrap: break-word; 
+  white-space: normal;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+#explanation pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto; 
+  max-width: 100%; 
+}
+
+/* Code editor */
+#code-editor {
+  flex: 1; 
+  height: 100%;
+  overflow: auto;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+/* CodeMirror in code editor */
+.CodeMirror {
+  color: #000 !important;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 1em;
+  background: #ffffff !important; 
+  line-height: 1.5;
+}
+
+.cm-keyword {
+  color: #07a !important;
+}
+.cm-variable {
+  color: #dd4a68 !important;
+}
+/* JavaScript number */
+.cm-number {
+  color: #905 !important;
+}
+/* JavaScript string */
+.cm-string {
+  color: #690 !important;
+}
+/* JavaScript operator*/
+.cm-operator {
+  color: #9a6e3a !important;
+}
+/* JavaScript function name */
+.cm-def {
+  color: #dd4a68 !important;
+}
+/* tag */
+.cm-tag {
+  color: #905 !important;
+}
+/* HTML attribute */
+.cm-attribute {
+  color: #690 !important;
+}
+/* HTML attribute value */
+.cm-string.cm-attribute {
+  color: #07a !important;
+}
+/* CSS selector */
+.cm-variable-2 {
+  color: #e90 !important;
+}
+/* CSS rule */
+.cm-atom {
+  color: #905 !important;
+}
+/* GLSL keyword */
+.cm-builtin {
+  color: #07a !important;
+}
+/* GLSL number */
+.cm-number {
+  color: #905 !important; 
+}
+/* GLSL variable */
+.cm-variable {
+  color: #e90 !important;
+}
+/* Single & multi-line comments for JavaScript, GLSL */
+.cm-comment, 
+.cm-comment-2, 
+.cm-comment-3 {
+  color: #708090 !important;
+  font-style: italic; 
+}
+/* type name */
+.cm-type {
+  color: #dd4a68 !important; 
+}
+/* Regular expression */
+.cm-string-2 {
+  color: #e90 !important;
+}
+/* CSS property */
+.cm-property {
+  color: #905 !important;
+}
+.cm-strong {
+  font-weight: bold;
+}
+/* Italics */
+.cm-em {
+  font-style: italic;
+}
+
+/* Output part */
+#output-section {
+  display: flex;
+  height: 30%;
+  border-top: 2px solid #ddd;
+  gap: 0px;
+}
+
+#output {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+#console {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background: #000;
+  color: #0f0;
+  font-family: monospace;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+/* Score container */
+#score-container {
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff6b6b;
+  margin-left: 40px;
+  white-space: nowrap;
+  flex: 1;
+}
+
+#score-value {
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+/* small Exercise page */
+.exercise-hint-button {
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid #ff6b6b;
+  border-radius: 5px;
+  background-color:#ff6b6b;
+  color: #fff;
+}
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebGL Educational Tool</title>
+  <script src="https://kit.fontawesome.com/77a57df523.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.10/codemirror.min.css">
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/create2Dtriangle.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body class="vertex-body">
+  <div id="navbar"></div>
+  <!-- Tab Navigation -->
+  <div id="tabs-wrapper">
+    <div id="tabs">
+      <button class="Prev-Next" onclick="prevTab()">Prev</button>
+      <div class="tab-list">
+      <button class="tab-button active" data-step="step1">1</button>
+      <button class="tab-button" data-step="step2">2</button>
+      <button class="tab-button" data-step="step3">3</button>
+      <button class="tab-button" data-step="step4">4</button>
+      </div>
+      <button class="Prev-Next" onclick="nextTab()">Next</button>
+    </div>
+    <div id="actions">
+      <button id="run" class="action-button">Run</button>
+      <button class="action-button clean">Clean</button>
+    </div>
+  </div>
+
+  <div id="main-container">
+    <!-- code editor -->
+    <div id="code-container">
+        <div id="file-tabs">Create 2D Triangle
+          <button class="file-tab active" data-file="index.html">index.html</button>
+          <button class="file-tab" data-file="main.js">main.js</button>
+        </div>
+      <div id="code-editor"></div>
+    </div>
+    <!-- Explanation area -->
+    <div id="explanation"></div>
+  </div>
+
+  <!-- output and console -->
+  <div id="output-section">
+    <div id="output">Output result...</div>
+    <div id="console">Error console...</div>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.10/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.10/mode/htmlmixed/htmlmixed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.10/mode/xml/xml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.10/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.10/mode/css/css.min.js"></script>
+
+  <script src="/js/output_merging.js"></script>
+ 
+</body>
+</html>
