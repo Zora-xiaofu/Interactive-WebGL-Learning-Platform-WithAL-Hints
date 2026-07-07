@@ -50,6 +50,24 @@ server.js
 package.json
 README.md
 
+### Screenshots
+### Homepage
+
+![Homepage](home_nosearch.png)
+
+### Tutorial Module
+
+![Tutorial](filetab-steptab1.png)
+
+### Exercise & Score System
+
+![Exercise](exercise.png)
+![Score](score1.png)
+
+### AI Hint System
+
+![AI Hint](hint-gpt1.png)
+
 ## User Evaluation
 
 The platform was evaluated using an 18-participant usability study.
