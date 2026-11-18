@@ -58,7 +58,7 @@ README.md
 ### Tutorial Module
 
 ![Tutorial](filetab-steptab1.png)
-
+![Tutorial](filetab-steptab2.png)
 ### Exercise & Score System
 
 ![Exercise](exercise.png)
