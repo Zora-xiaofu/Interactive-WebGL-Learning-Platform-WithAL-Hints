@@ -1,0 +1,169 @@
+/* log in form styles */
+.login-background {
+  height: 100vh; 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #131313;
+}
+  
+.login-form {
+  width: 350px;
+  background-color: #2d2f36;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 0.6);
+  margin: 0 auto;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.login-form:hover {
+  box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.8);
+}
+
+.login-form h1 {
+  color: #ffffff;
+  text-align: center;
+}
+
+.login-form label {
+  color: #c4c4c4;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 94%;
+  padding: 10px;
+  margin: 8px 0 16px 0;
+  border: none;
+  background: #44474f;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.login-form input[type="text"]::placeholder,
+.login-form input[type="password"]::placeholder {
+  color: #7a7d86;
+}
+
+/* login form button group*/
+.login-button-group {
+  display: flex; 
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.login-button-group .login-button,
+.login-button-group .cancel-button {
+  width: 48%;
+  padding: 12px;
+  border: 2px solid #ff6b6b;
+  background-color: transparent;
+  color: #ff6b6b;
+  border-radius: 25px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+}
+
+.login-button-group .login-button:hover,
+.login-button-group .cancel-button:hover {
+  background-color: #ff6b6b;
+  color: #ffffff;
+}
+
+/* Signup Form Styles */
+.signup-background {
+  height: 100vh; 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #131313;
+}
+
+.signup-form {
+  width: 400px;
+  background-color: #2d2f36;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 0.6);
+  margin: 0 auto;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.signup-form:hover {
+  box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.8);
+}
+
+.signup-form h1 {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.signup-form p {
+  color: #bdbcbc;
+  font-size: 17px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.signup-form label {
+  color: #c4c4c4;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.signup-form input[type="text"],
+.signup-form input[type="password"] {
+  width: 94%;
+  padding: 10px;
+  margin: 16px 0 16px 0;
+  border: none;
+  background: #44474f;
+  color: #ffffff;
+  border-radius: 5px; 
+
+}
+
+.signup-form input[type="text"]::placeholder,
+.signup-form input[type="password"]::placeholder {
+  color: #7a7d86;
+}
+
+.signup-form .signup-button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Sign up button styles */
+.signup-button-group .cancelbtn,
+.signup-button-group .signupbtn {
+  width: 48%;
+  padding: 12px;
+  border: 2px solid #ff6b6b;
+  background-color: transparent;
+  color: #ff6b6b;
+  border-radius: 25px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+}
+
+.signup-button-group .cancelbtn:hover,
+.signup-button-group .signupbtn:hover {
+  background-color: #ff6b6b; 
+  color: #ffffff;
+}

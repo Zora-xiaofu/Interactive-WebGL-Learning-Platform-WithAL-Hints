@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">              
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebGL Educational Tool</title>
+  <link rel="stylesheet" href="/css/signup-login.css">
+  <script src="https://kit.fontawesome.com/77a57df523.js" crossorigin="anonymous"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="login-background">
+  <!-- Login form -->
+  <form class="login-form" novalidate>
+    <div class="registration_container">
+      <h1>Log In</h1>
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+  
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <!-- Buttons container -->
+      <div class="login-button-group">
+        <button type="submit" class="login-button">Login</button>
+        <button type="button" class="cancel-button" onclick="window.location.href='index.html'">Cancel</button>
+      </div>
+    </div>
+  </form>
+  <script src="js/auth.js"></script>
+</body>
+</html>
+  

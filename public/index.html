@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang ="en">              
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGL Educational Tool</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://kit.fontawesome.com/77a57df523.js" crossorigin="anonymous"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <!-- Navbar Section -->
+  <div id="navbar"></div>
+  <!-- search Section -->
+  <form class="example" style="margin:40px auto">
+      <input type="text" placeholder="Find relevant content on this page..." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+
+  <!-- Introduction Section -->
+  <div class="introduction-container">
+    <h2>Welcome to the WebGL Tutorial!</h2>
+    <p>This website is designed for beginners to learn <strong>WebGL rendering pipeline</strong> step by step.</p>
+    <p>By following the WebGL rendering pipeline, you will progressively write a <strong>2D colored triangle program</strong> and get a deeper understanding of how WebGL works.</p>
+    
+    <h3>What you will learn:</h3>
+    <ul>
+      <li>The <strong>WebGL Rendering Pipeline</strong> (Vertex Processing -> Rasterization -> Fragment Processing -> Output Merging -> Display)</li>
+      <li>- How to write <strong>shaders</strong> (vertex shader & fragment shader)</li>
+      <li>- How to render a <strong>2D triangle with colors</strong></li>
+      <li>- <strong>Hands-on experience</strong> - Create your own triangle from scratch!</li>
+    </ul>
+    <p>Are you ready? Click the WebGL rendering pipeline buttons below, follow the sequence <strong>from left to right</strong> , and complete each stage to build your 2D colored triangle!</p>
+  </div>
+
+  <!-- Pipeline Diagram Section -->
+  <div class="pipeline-container">
+    <div class="arrow"><i class="fa-solid fa-arrow-right fa-2xl" style="color: #131313;"></i></div>
+    <a href="vertex_processor.html" class="pipeline-step">Vertex Processor<br>(Programmable)</a>
+    <div class="arrow"><i class="fa-solid fa-arrow-right fa-2xl" style="color: #131313;"></i></div>
+    <a href="rasterizer.html" class="pipeline-step">Rasterizer</a>
+    <div class="arrow"><i class="fa-solid fa-arrow-right fa-2xl" style="color: #131313;"></i></div>
+    <a href="fragment_processor.html" class="pipeline-step">Fragment Processor<br>(Programmable)</a>
+    <div class="arrow"><i class="fa-solid fa-arrow-right fa-2xl" style="color: #131313;"></i></div>
+    <a href="output_merging.html" class="pipeline-step">Output Merging</a>
+    <div class="arrow"><i class="fa-solid fa-arrow-right fa-2xl" style="color: #131313;"></i></div>
+    <a href="exercise.html" class="pipeline-step">Display</a>
+  </div>
+
+  <!-- Image Section -->
+  <div class="pipeline-explanation-title">
+  <h2>Rendering Pipeline Overview</h2>
+  </div>
+  <div class="image-section">
+    <div class="image-container">
+      <img src="images/OpenGL-Rendering-Pipeline.ppm" alt="OpenGL Rendering Pipeline" class="centered-image">
+      <p class="image-caption">Figure 1: OpenGL Rendering Pipeline</p>
+      <p class="image-reference">Source: He, Chaoyang & Li, Ming. (2019). Efficient Spatial Anti-Aliasing Rendering for Line Joins on Vector Maps - Scientific Figure on ResearchGate.</p>
+    </div>
+  </div>
+
+  <!-- Rendering Pipeline Explanation Section -->
+  <div class="pipeline-explanation">
+
+    <h3>1. Vertex Specification</h3>
+    <p>Main article: <a href="https://www.khronos.org/opengl/wiki/Vertex_Specification" target="_blank">Vertex Specification</a></p>
+    <p>The process of vertex specification is where the application sets up an ordered list of vertices to send to the pipeline. These vertices define the boundaries of a primitive.</p>
+    <p>Primitives are basic drawing shapes, like triangles, lines, and points. Exactly how the list of vertices is interpreted as primitives is handled via a later stage.</p>
+    <p>This part of the pipeline deals with a number of objects like <a href="https://www.khronos.org/opengl/wiki/Vertex_Specification#Vertex_Array_Object" target="_blank">Vertex Array Objects</a> and <a href="https://www.khronos.org/opengl/wiki/Vertex_Specification#Vertex_Buffer_Object" target="_blank">Vertex Buffer Objects</a>. Vertex Array Objects define what data each vertex has, while Vertex Buffer Objects store the actual vertex data itself.</p>
+    <p>A vertex's data is a series of attributes. Each attribute is a small set of data that the next stage will do computations on. While a set of attributes do specify a vertex, there is nothing that says that part of a vertex's attribute set needs to be a position or normal. Attribute data is entirely arbitrary; the only meaning assigned to any of it happens in the vertex processing stage.</p>
+    
+    <h4>Vertex Rendering</h4>
+    <p>Main article: <a href="https://www.khronos.org/opengl/wiki/Vertex_Rendering" target="_blank">Vertex Rendering</a></p>
+    <p>Once the vertex data is properly specified, it is then rendered as a Primitive via a drawing command.</p>
+
+    <h3>2. Vertex Processing</h3>
+    <p>Vertices fetched due to the prior vertex rendering stage begin their processing here. The vertex processing stages are almost all programmable operations. This allows user code to customize the way vertices are processed. Each stage represents a different kind of shader operation. Many of these stages are optional.</p>
+    <h4>Vertex shader</h4>
+    <p>Main article: <a href="https://www.khronos.org/opengl/wiki/Vertex_Shader" target="_blank">Vertex Shader</a></p>
+    <p>Vertex shaders perform basic processing of each individual vertex. Vertex shaders receive the attribute inputs from the vertex rendering and converts each incoming vertex into a single outgoing vertex based on an arbitrary, user-defined program.</p>
+    <p>Vertex shaders can have user-defined outputs, but there is also a special output that represents the final position of the vertex. If there are no subsequent vertex processing stages, vertex shaders are expected to fill in this position with the clip-space position of the vertex, for rendering purposes.</p>
+    <p>One limitation on vertex processing is that each input vertex must map to a specific output vertex. And because vertex shader invocations cannot share state between them, the input attributes to output vertex data mapping is 1:1. That is, if you feed the exact same attributes to the same vertex shader in the same primitive, you will get the same output vertex data. This gives implementations the right to optimize vertex processing; if they can detect that they're about to process a previously processed vertex, they can use the previously processed data stored in a post-transform cache. Thus they do not have to run the vertex processing on that data again.</p>
+    <p>Vertex shaders are not optional.</p>
+
+    <h3>3. Vertex post-processing</h3>
+    <p>Main article: <a href="https://www.khronos.org/opengl/wiki/Vertex_Post-Processing" target="_blank">Vertex Post-Processing</a></p>
+    <p>After the shader-based vertex processing, vertices undergo a number of fixed-function processing steps.</p>
+
+    <h4>Primitive assembly</h4>
+    <p>Main article: <a href="https://www.khronos.org/opengl/wiki/Primitive_Assembly" target="_blank">Primitive Assembly</a></p>
+    <p>Primitive assembly is the process of collecting a run of vertex data output from the prior stages and composing it into a sequence of primitives. The type of primitive the user rendered with determines how this process works.</p>
+    <P>The output of this process is an ordered sequence of simple primitives (lines, points, or triangles). If the input is a triangle strip primitive containing 12 vertices, for example, the output of this process will be 10 triangles.</P>
+    <p>If tessellation or geometry shaders are active, then a limited form of primitive assembly is executed before these Vertex Processing stages. This is used to feed those particular shader stages with individual primitives, rather than a sequence of vertices.</p>
+    <p>The rendering pipeline can also be aborted at this stage. This allows the use of Transform Feedback operations, without having to actually render something.</p>
+
+    <h4>Clipping</h4>
+    <p>Main article: <a href="https://www.khronos.org/opengl/wiki/Vertex_Post-Processing#Clipping" target="_blank">Clipping</a></p>
+    <p>The primitives are then clipped. Clipping means that primitives that lie on the boundary between the inside of the viewing volume and the outside are split into several primitives, such that the entire primitive lies in the volume. Also, the last Vertex Processing shader stage can specify user-defined clipping operations, on a per-vertex basis.</p>
+    <p>The vertex positions are transformed from clip-space to window space via the Perspective Divide and the Viewport Transform.</p>
+
+    <h4>Face culling</h4>
+    <p>Main article: <a href="https://www.khronos.org/opengl/wiki/Face_Culling" target="_blank">Face Culling</a></p>
+    <p>Triangle primitives can be culled (ie: discarded without rendering) based on the triangle's facing in window space. This allows you to avoid rendering triangles facing away from the viewer. For closed surfaces, such triangles would naturally be covered up by triangles facing the user, so there is never any need to render them. Face culling is a way to avoid rendering such primitives.</p>
+
+    <h3>4. Rasterization</h3>
+    <p>Main article: <a href="https://www.khronos.org/opengl/wiki/Rasterization" target="_blank">Rasterization</a></p>
+
+    <p>
+      Primitives that reach this stage are then rasterized in the order in which they were given. The result of rasterizing a primitive is a sequence of Fragments.
+    </p>
+    <p>A fragment is a set of state that is used to compute the final data for a pixel (or sample if multisampling is enabled) in the output framebuffer. The state for a fragment includes its position in screen-space, the sample coverage if multisampling is enabled, and a list of arbitrary data that was output from the previous vertex or geometry shader.    </p>
+    <P>This last set of data is computed by interpolating between the data values in the vertices for the fragment. The style of interpolation is defined by the shader that outputed those values.</P>
+
+    <h3>5. Fragment Processing</h3>
+    <p>Main article: <a href="https://www.khronos.org/opengl/wiki/Fragment_Shader" target="_blank">Fragment Shader</a></p>
+    <p>The data for each fragment from the rasterization stage is processed by a fragment shader. The output from a fragment shader is a list of colors for each of the color buffers being written to, a depth value, and a stencil value. Fragment shaders are not able to set the stencil data for a fragment, but they do have control over the color and depth values.    </p>
+    <p>Fragment shaders are optional. If you render without a fragment shader, the depth (and stencil) values of the fragment get their usual values. But the value of all of the colors that a fragment could have are undefined. Rendering without a fragment shader is useful when rendering only a primitive's default depth information to the depth buffer, such as when performing Occlusion Query tests.</p>
+
+    <h3>6. Per-Sample Operations</h3>
+    <p>Main article: <a href="https://www.khronos.org/opengl/wiki/Per-Sample_Processing" target="_blank">Per-Sample_Processing</a></p>
+    <p>The fragment data output from the fragment processor is then passed through a sequence of steps.</p>
+    <p>The first step is a sequence of culling tests; if a test is active and the fragment fails the test, the underlying pixels/samples are not updated (usually). Many of these tests are only active if the user activates them. The tests are:</p>
+    <ul>
+      <li><strong>Pixel ownership test:</strong> Fails if the fragment's pixel is not "owned" by OpenGL (if another window is overlapping with the GL window). Always passes when using a Framebuffer Object. Failure means that the pixel contains undefined values.</li>
+      <li><strong>Scissor Test:</strong> When enabled, the test fails if the fragment's pixel lies outside of a specified rectangle of the screen.</li>
+      <li><strong>Stencil Test:</strong> When enabled, the test fails if the stencil value provided by the test does not compare as the user specifies against the stencil value from the underlying sample in the stencil buffer. Note that the stencil value in the framebuffer can still be modified even if the stencil test fails (and even if the depth test fails).</li>
+      <li><strong>Depth Test:</strong> When enabled, the test fails if the fragment's depth does not compare as the user specifies against the depth value from the underlying sample in the depth buffer.</li>
+    </ul>
+    <p><strong>Note:</strong> Though these are specified to happen after the Fragment Shader, they can be made to happen before the fragment shader under certain conditions. If they happen before the FS, then any culling of the fragment will also prevent the fragment shader from executing, thus saving performance.</p>
+    <p>After this, color blending happens. For each fragment color value, there is a specific blending operation between it and the color already in the framebuffer at that location. Logical Operations may also take place in lieu of blending, which perform bitwise operations between the fragment colors and framebuffer colors.</p>
+    <p>Lastly, the fragment data is written to the framebuffer. Masking operations allow the user to prevent writes to certain values. Color, depth, and stencil writes can be masked on and off; individual color channels can be masked as well.</p>
+  </div>
+  <p class="wiki-reference">Source: OpenGL wiki</p>
+
+  <script>
+    fetch('./navbar.html')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+        
+        const menu = document.querySelector('#mobile-menu');
+        const menuLinks = document.querySelector('.navbar__menu');
+
+        menu.addEventListener('click', function() {
+          menu.classList.toggle('is-active');
+          menuLinks.classList.toggle('active');
+        });
+      })
+      .catch(error => {
+        console.error('There was a problem loading the navbar:', error);
+      });
+  </script>
+   <script src="/js/search.js"></script>
+</body>
+</html>
